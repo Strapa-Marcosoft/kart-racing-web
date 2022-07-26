@@ -1,24 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import AdmHome from "./components/AdmHome";
+import {Route, Routes } from 'react-router-dom';
+import ListLocation from "./components/ListLocation";
+import FormLocation from "./components/FormLocation";
+import ListPilot from "./components/ListPilot";
+import FormPilot from "./components/FormPilot";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+        <Routes>
+            <Route path="/" element={<AdmHome/>} exact/>
+            <Route path="/location" element={<ListLocation/>} exact/>
+            <Route path="/location/new" element={<FormLocation/>} exact/>
+            <Route path="/pilot" element={<ListPilot/>} exact/>
+            <Route path="/pilot/new" element={<FormPilot/>} exact/>
+        </Routes>
+    </main>
   );
 }
 

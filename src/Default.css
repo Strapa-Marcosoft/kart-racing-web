@@ -1,0 +1,15 @@
+body{
+    background-color: #f3f3f3;
+    font-family: Verdana;
+    font-size: 15px;
+}
+
+.title{
+    font-size: 17px;
+    font-weight: bold;
+}
+
+button{
+    width: 150px;
+    height: 40px;
+}
