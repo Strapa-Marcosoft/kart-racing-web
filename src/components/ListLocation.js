@@ -1,6 +1,8 @@
 import "../Default.css"
 import {Component} from "react";
 import {Link} from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.css';
+
 
 class ListLocation extends Component{
 
@@ -23,7 +25,8 @@ class ListLocation extends Component{
             "method": "GET"
         });
         const data = await response.json();
-        this.setState({locationList : data.map((d) => <tr key={d.id}><td>{d.id}</td><td>{d.title}</td></tr>)});
+        let locationList = data._embedded.locationEntities;
+        this.setState({locationList : locationList.map((d) => <div className="row" key={d.title}><div className="col-sm">{d.title}</div></div>)});
     }
 
     render() {
@@ -33,13 +36,14 @@ class ListLocation extends Component{
                 <div className="title">Location List</div>
                 <button><Link to="/location/new">Add Location</Link></button>
                 <button><Link to="/">Back</Link></button>
-                <table>
-                    <tr>
-                        <th>Id</th>
-                        <th>Title</th>
-                    </tr>
-                    {this.state.locationList}
-                </table>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm">
+                            Title
+                        </div>
+                    </div>
+                        {this.state.locationList}
+                </div>
             </div>
         )
     }
