@@ -1,7 +1,7 @@
-import "../Default.css"
 import {Component} from "react";
 import {Link} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
+import AdmHeader from "./AdmHeader";
 
 
 class ListLocation extends Component{
@@ -9,11 +9,12 @@ class ListLocation extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            locationList : ""
+            locationList : "",
+            getData : 1
         }
 
         this.handleChange = this.handleChange.bind(this);
-        this.getLocationList = this.getLocationList.bind(this)
+        this.getLocationList = this.getLocationList.bind(this);
     }
 
     handleChange(event){
@@ -26,24 +27,27 @@ class ListLocation extends Component{
         });
         const data = await response.json();
         let locationList = data._embedded.locationEntities;
-        this.setState({locationList : locationList.map((d) => <div className="row" key={d.title}><div className="col-sm">{d.title}</div></div>)});
+        this.setState({locationList : locationList.map((d) => <tr key={d.title}><td>{d.title}</td></tr>)});
+        this.setState({getData : 0});
     }
 
+
     render() {
-        this.getLocationList()
+        if(this.state.getData) this.getLocationList();
         return (
             <div>
-                <div className="title">Location List</div>
-                <button><Link to="/location/new">Add Location</Link></button>
-                <button><Link to="/">Back</Link></button>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-sm">
-                            Title
-                        </div>
-                    </div>
-                        {this.state.locationList}
-                </div>
+                <AdmHeader/>
+                <h4>Location List</h4>
+                <button className="btn btn-light"><Link to="/location/new">Add Location</Link></button>
+                <button className="btn btn-light"><Link to="/">Back</Link></button>
+                <table className="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                        </tr>
+                    </thead>
+                    <tbody>{this.state.locationList}</tbody>
+                </table>
             </div>
         )
     }

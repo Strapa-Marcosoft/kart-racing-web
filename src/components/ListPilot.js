@@ -1,15 +1,18 @@
 import {Component} from "react";
 import {Link} from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.css';
+import AdmHeader from "./AdmHeader";
 
 class ListPilot extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            pilotList : ""
+            pilotList : "",
+            getData : 1
         }
 
         this.handleChange = this.handleChange.bind(this);
-        this.getPilotList = this.getPilotList.bind(this)
+        this.getPilotList = this.getPilotList.bind(this);
     }
 
     handleChange(event){
@@ -21,23 +24,27 @@ class ListPilot extends Component{
             "method": "GET"
         });
         const data = await response.json();
-        this.setState({pilotList : data.map((d) => <tr key={d.id}><td>{d.id}</td><td>{d.title}</td></tr>)});
+        let pilotList = data._embedded.pilotEntities;
+        this.setState({pilotList : pilotList.map((d) => <tr key={d.alias}><td>{d.fullName}</td><td>{d.alias}</td></tr>)});
+        this.setState({getData : 0});
     }
 
     render() {
-        this.getPilotList()
+        if(this.state.getData) this.getPilotList()
         return (
             <div>
-                <div className="title">Pilot List</div>
-                <button><Link to="/pilot/new">Add Pilot</Link></button>
-                <button><Link to="/">Back</Link></button>
-                <table>
+                <AdmHeader/>
+                <h4>Pilot List</h4>
+                <button className="btn btn-light"><Link to="/pilot/new">Add Pilot</Link></button>
+                <button className="btn btn-light"><Link to="/">Back</Link></button>
+                <table className="table table-striped table-hover">
+                    <thead>
                     <tr>
-                        <th>Id</th>
                         <th>Full Name</th>
                         <th>Alias</th>
                     </tr>
-                    {this.state.pilotList}
+                    </thead>
+                    <tbody>{this.state.pilotList}</tbody>
                 </table>
             </div>
         );

@@ -8,15 +8,17 @@ import FormPilot from "./components/FormPilot";
 
 function App() {
   return (
-    <main>
-        <Routes>
-            <Route path="/" element={<AdmHome/>} exact/>
-            <Route path="/location" element={<ListLocation/>} exact/>
-            <Route path="/location/new" element={<FormLocation/>} exact/>
-            <Route path="/pilot" element={<ListPilot/>} exact/>
-            <Route path="/pilot/new" element={<FormPilot/>} exact/>
-        </Routes>
-    </main>
+      <div class="w-75 border" >
+        <main>
+            <Routes>
+                <Route path="/" element={<AdmHome/>} exact/>
+                <Route path="/location" element={<ListLocation/>} exact/>
+                <Route path="/location/new" element={<FormLocation/>} exact/>
+                <Route path="/pilot" element={<ListPilot/>} exact/>
+                <Route path="/pilot/new" element={<FormPilot/>} exact/>
+            </Routes>
+        </main>
+      </div>
   );
 }
 

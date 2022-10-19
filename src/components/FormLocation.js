@@ -1,5 +1,7 @@
 import {Component} from "react";
 import {Link} from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.css';
+import AdmHeader from "./AdmHeader";
 
 class FormLocation extends Component{
     constructor(props) {
@@ -9,23 +11,40 @@ class FormLocation extends Component{
         }
 
         this.handleChange = this.handleChange.bind(this)
+        this.addNewLocation = this.addNewLocation.bind(this)
     }
 
     handleChange(event){
         this.setState({[event.target.name]:event.target.value})
     }
 
+    addNewLocation(){
+        const responseOne = fetch('http://localhost:8080/locationEntities', {
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json"
+            },
+            "body": JSON.stringify({
+                title: this.state.title
+            })
+        });
+    }
+
     render() {
         return (
             <div>
+                <AdmHeader/>
+                <h4>Add Location</h4>
+
+
+                    Title
+                    <input type="text" name="title" value={this.state.title} onChange={this.handleChange}/>
+
+
                 <table>
                     <tr>
-                        <td>Title:</td>
-                        <td><input type="text" name="title" value={this.state.title} onChange={this.handleChange}/></td>
-                    </tr>
-                    <tr>
-                        <td><button>Save</button></td>
-                        <td><button><Link to="/location">Cancel</Link></button></td>
+                        <td><button className="btn btn-light" onClick={this.addNewLocation}>Save</button></td>
+                        <td><button className="btn btn-light"><Link to="/location">Cancel</Link></button></td>
                     </tr>
                 </table>
             </div>
