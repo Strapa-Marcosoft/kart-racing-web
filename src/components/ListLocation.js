@@ -2,38 +2,31 @@ import {Component} from "react";
 import {Link} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
 import AdmHeader from "./AdmHeader";
-
+import kartRacingApi from "./AxiosConfig";
 
 class ListLocation extends Component{
 
     constructor(props) {
         super(props);
         this.state = {
-            locationList : "",
-            getData : 1
+            locationList : ""
         }
-
-        this.handleChange = this.handleChange.bind(this);
-        this.getLocationList = this.getLocationList.bind(this);
+        this.getLocationList();
     }
 
-    handleChange(event){
-        this.setState({[event.target.name]:event.target.value})
-    }
-
-    async getLocationList(){
-        const response = await  fetch('http://localhost:8080/locationEntities', {
-            "method": "GET"
-        });
-        const data = await response.json();
-        let locationList = data._embedded.locationEntities;
-        this.setState({locationList : locationList.map((d) => <tr key={d.title}><td>{d.title}</td></tr>)});
-        this.setState({getData : 0});
+    getLocationList(){
+        kartRacingApi.get('/locationEntities')
+            .then(res => {
+                let locationList = res.data._embedded.locationEntities
+                this.setState({locationList : locationList.map((d) =>
+                        <tr key={d.title}>
+                            <td>{d.title}</td>
+                        </tr>)});
+            } )
     }
 
 
     render() {
-        if(this.state.getData) this.getLocationList();
         return (
             <div>
                 <AdmHeader/>

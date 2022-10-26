@@ -10,9 +10,9 @@ class AdmHome extends Component{
                 <AdmHeader/>
                 <br/><br/>
                 <ul>
-                    <li>Seasons</li>
+                    <li><Link to="/season">Seasons</Link></li>
                     <li><Link to="/location">Location</Link></li>
-                    <li>Rounds</li>
+                    <li><Link to="/round">Rounds</Link></li>
                     <li><Link to="/pilot">Pilot</Link></li>
                 </ul>
             </div>

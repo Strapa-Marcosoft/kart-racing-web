@@ -2,6 +2,7 @@ import {Component} from "react";
 import {Link} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
 import AdmHeader from "./AdmHeader";
+import kartRacingApi from "./AxiosConfig";
 
 class FormLocation extends Component{
     constructor(props) {
@@ -19,15 +20,11 @@ class FormLocation extends Component{
     }
 
     addNewLocation(){
-        const responseOne = fetch('http://localhost:8080/locationEntities', {
-            "method": "POST",
-            "headers": {
-                "content-type": "application/json"
-            },
-            "body": JSON.stringify({
-                title: this.state.title
-            })
-        });
+
+        kartRacingApi.post('/locationEntities',{
+            title: this.state.title
+        })
+
     }
 
     render() {

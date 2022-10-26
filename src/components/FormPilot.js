@@ -2,6 +2,7 @@ import {Component} from "react";
 import {Link} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
 import AdmHeader from "./AdmHeader";
+import kartRacingApi from "./AxiosConfig";
 
 class FormPilot extends Component{
     constructor(props) {
@@ -20,16 +21,10 @@ class FormPilot extends Component{
     }
 
     addNewPilot(){
-        const responseOne = fetch('http://localhost:8080/pilotEntities', {
-            "method": "POST",
-            "headers": {
-                "content-type": "application/json"
-            },
-            "body": JSON.stringify({
-                fullName: this.state.fullName,
-                alias: this.state.alias
-            })
-        });
+        kartRacingApi.post('/pilotEntities',{
+            fullName: this.state.fullName,
+            alias: this.state.alias
+        })
     }
 
     render() {

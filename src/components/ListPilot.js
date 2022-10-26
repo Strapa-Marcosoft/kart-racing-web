@@ -2,35 +2,31 @@ import {Component} from "react";
 import {Link} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
 import AdmHeader from "./AdmHeader";
+import kartRacingApi from "./AxiosConfig";
 
 class ListPilot extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            pilotList : "",
-            getData : 1
+            pilotList : ""
         }
-
-        this.handleChange = this.handleChange.bind(this);
-        this.getPilotList = this.getPilotList.bind(this);
+        this.getPilotList()
     }
 
-    handleChange(event){
-        this.setState({[event.target.name]:event.target.value})
-    }
 
-    async getPilotList(){
-        const response = await  fetch('http://localhost:8080/pilotEntities', {
-            "method": "GET"
-        });
-        const data = await response.json();
-        let pilotList = data._embedded.pilotEntities;
-        this.setState({pilotList : pilotList.map((d) => <tr key={d.alias}><td>{d.fullName}</td><td>{d.alias}</td></tr>)});
-        this.setState({getData : 0});
+    getPilotList(){
+        kartRacingApi.get('/pilotEntities')
+            .then(res => {
+                let pilotList = res.data._embedded.pilotEntities
+                this.setState({pilotList : pilotList.map((d) =>
+                        <tr key={d.alias}>
+                            <td>{d.fullName}</td>
+                            <td>{d.alias}</td>
+                        </tr>)});
+            })
     }
 
     render() {
-        if(this.state.getData) this.getPilotList()
         return (
             <div>
                 <AdmHeader/>
