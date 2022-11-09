@@ -1,30 +1,23 @@
-import {Component} from "react";
+import {useEffect, useState} from "react";
 import kartRacingApi from "./AxiosConfig";
 import AdmHeader from "./AdmHeader";
 import {Link} from "react-router-dom";
 
-class ListRound extends Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            roundList : ""
-        }
-        this.getRoundList();
-    }
+function ListRound(){
+    const [roundList, setRoundList] = useState([]);
 
-    getRoundList() {
+    useEffect(() => {
+        getRoundList();
+    }, []);
+
+    function getRoundList(){
         kartRacingApi.get("/roundEntities")
             .then( res => {
-                let seasonList = res.data._embedded.seasonEntities;
-                this.setState({seasonList: seasonList.map((d) =>
-                        <tr>
-                            <td>{d.season}</td>
-                            <td>{d.location}</td>
-                        </tr> )})
+                setRoundList(res.data._embedded.roundEntities);
             });
     }
 
-    render() {
+    
         return(
             <div>
                 <AdmHeader/>
@@ -38,11 +31,15 @@ class ListRound extends Component{
                         <th>Location</th>
                     </tr>
                     </thead>
-                    <tbody>{this.state.pilotList}</tbody>
+                    <tbody>{this.state.roundList.map((d) =>
+                        <tr>
+                            <td>{d.season}</td>
+                            <td>{d.location}</td>
+                        </tr> )}</tbody>
                 </table>
             </div>
         )
-    }
+    
 }
 
 export default ListRound;

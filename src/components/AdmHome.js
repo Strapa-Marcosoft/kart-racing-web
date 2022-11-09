@@ -11,9 +11,9 @@ class AdmHome extends Component{
                 <br/><br/>
                 <ul>
                     <li><Link to="/season">Seasons</Link></li>
-                    <li><Link to="/location">Location</Link></li>
+                    <li><Link to="/location">Locations</Link></li>
                     <li><Link to="/round">Rounds</Link></li>
-                    <li><Link to="/pilot">Pilot</Link></li>
+                    <li><Link to="/pilot">Pilots</Link></li>
                 </ul>
             </div>
         );
