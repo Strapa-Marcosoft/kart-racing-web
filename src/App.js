@@ -6,7 +6,9 @@ import FormLocation from "./components/FormLocation";
 import ListPilot from "./components/ListPilot";
 import FormPilot from "./components/FormPilot";
 import ListSeason from "./components/ListSeasson";
+import FormSeason from "./components/FormSeason"
 import ListRound from "./components/ListRound";
+//import FormRound from "./components/FormRound";
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
                 <Route path="/pilot" element={<ListPilot/>} exact/>
                 <Route path="/pilot/new" element={<FormPilot/>} exact/>
                 <Route path="/season" element={<ListSeason/>} exact/>
+                <Route path="/season/new" element={<FormSeason/>} exact/>
                 <Route path="/round" element={<ListRound/>} exact/>
             </Routes>
         </main>

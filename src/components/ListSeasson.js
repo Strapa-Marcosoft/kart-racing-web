@@ -22,7 +22,7 @@ function ListSeason() {
         <div>
             <AdmHeader/>
             <h4>Season List</h4>
-            <button className="btn btn-light"><Link to="season/new">Add Season</Link></button>
+            <button className="btn btn-light"><Link to="/season/new">Add Season</Link></button>
             <button className="btn btn-light"><Link to="/">Back</Link></button>
             <table className="table table-striped table-hover">
                 <thead>

@@ -31,7 +31,7 @@ function ListRound(){
                         <th>Location</th>
                     </tr>
                     </thead>
-                    <tbody>{this.state.roundList.map((d) =>
+                    <tbody>{roundList.map((d) =>
                         <tr>
                             <td>{d.season}</td>
                             <td>{d.location}</td>
