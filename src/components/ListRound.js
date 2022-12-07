@@ -29,12 +29,14 @@ function ListRound(){
                     <tr>
                         <th>Season</th>
                         <th>Location</th>
+                        <th>Date</th>
                     </tr>
                     </thead>
                     <tbody>{roundList.map((d) =>
-                        <tr>
+                        <tr key={d.id}>
                             <td>{d.season}</td>
                             <td>{d.location}</td>
+                            <td>{d.date}</td>
                         </tr> )}</tbody>
                 </table>
             </div>
