@@ -10,14 +10,38 @@ function ListRound(){
         getRoundList();
     }, []);
 
+    function convertDate(originalDate){
+        let convertedDate = originalDate.split('-')
+        return convertedDate[2] + "/" + convertedDate[1] + "/" + convertedDate[0];
+    }
+
     function getRoundList(){
         kartRacingApi.get("/roundEntities")
-            .then( res => {
-                setRoundList(res.data._embedded.roundEntities);
+            .then(async res => {
+
+                 let roundList = Promise.all(res.data._embedded.roundEntities.map(async round => {
+
+                    let seasonTitle = await kartRacingApi.get("/seasonEntities/" + round.season)
+                                            .then(res => {
+                                                return res.data.title;
+                                            })
+
+                    let locationTitle = await kartRacingApi.get("/locationEntities/" + round.location)
+                         .then(res => {
+                             return res.data.title;
+                         })
+
+                    return {
+                        ...round,
+                        seasonTitle,
+                        locationTitle
+                    }
+                }));
+
+                setRoundList(await roundList);
             });
     }
 
-    
         return(
             <div>
                 <AdmHeader/>
@@ -34,9 +58,9 @@ function ListRound(){
                     </thead>
                     <tbody>{roundList.map((d) =>
                         <tr key={d.id}>
-                            <td>{d.season}</td>
-                            <td>{d.location}</td>
-                            <td>{d.date}</td>
+                            <td>{d.seasonTitle}</td>
+                            <td>{d.locationTitle}</td>
+                            <td>{convertDate(d.date)}</td>
                         </tr> )}</tbody>
                 </table>
             </div>
