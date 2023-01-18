@@ -12,16 +12,32 @@ function FormRound () {
     const [locationList, setLocationList] = useState([]);
 
 
-    function addNewRound(){
+    function addNewRound() {
         console.log(season);
         console.log(date);
-        kartRacingApi.post('/roundEntities',{
+        const data = {
             season,
             location,
             date
-        })
+        };
+        kartRacingApi.post('/roundEntities', data)
+            .then(roundResponse => {
+                const roundId = roundResponse.data.id;
+                kartRacingApi.get("/pilotEntities")
+                    .then(pilotResponse => {
+                        pilotResponse.data._embedded.pilotEntities.map(pilot => {
+                            const roundPilotData = {
+                                round: roundId,
+                                pilot: pilot.id
+                            }
+                            kartRacingApi.post("/roundPilotEntities", roundPilotData);
+                        })
+                    })
+            })
+            .catch(error => {
+                alert(error);
+            })
     }
-
 
     useEffect(() => {
         getSeasonList();

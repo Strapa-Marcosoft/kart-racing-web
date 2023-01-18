@@ -58,9 +58,10 @@ function ListRound(){
                     </thead>
                     <tbody>{roundList.map((d) =>
                         <tr key={d.id}>
+                            <td><Link to={"/round/"+d.id}>{convertDate(d.date)}</Link></td>
                             <td>{d.seasonTitle}</td>
                             <td>{d.locationTitle}</td>
-                            <td>{convertDate(d.date)}</td>
+
                         </tr> )}</tbody>
                 </table>
             </div>
