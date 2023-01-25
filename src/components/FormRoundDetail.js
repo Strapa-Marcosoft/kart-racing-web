@@ -5,7 +5,7 @@ import AdmHeader from "./AdmHeader";
 import kartRacingApi from "./AxiosConfig";
 
 function FormRoundDetail () {
-    const [pilotList, setPilotList] = useState([])
+    const [roundPilotList, setPilotList] = useState([])
     let { id } = useParams();
 
     useEffect(() => {
@@ -14,11 +14,19 @@ function FormRoundDetail () {
 
     function getPilotList() {
         console.log(id);
-        //TODO Change api to search roundPilots by round
-        kartRacingApi.get('/roundPilotEntities/'+id)
-            .then(res => {
-                const data = res.data._embedded.pilotEntities;
-                setPilotList(data)
+        kartRacingApi.get('/roundPilotEntities/search/getAllByRound?round='+id)
+            .then(async res => {
+                let roundPilotList = Promise.all(res.data._embedded.roundPilotEntities.map(async roundPilot => {
+                    let pilotName = await kartRacingApi.get("/pilotEntities/" + roundPilot.pilot)
+                        .then(res => res.data.fullName);
+
+                    return {
+                        ...roundPilot,
+                        pilotName
+                    };
+                }));
+
+                setPilotList(await roundPilotList)
             })
     }
 
@@ -31,15 +39,23 @@ function FormRoundDetail () {
             <table className="table table-striped table-hover">
                 <thead>
                 <tr>
-                    <th>Full Name</th>
-                    <th>Alias</th>
+                    <th>Pilot Name</th>
+                    <th>Final Position</th>
+                    <th>Best Lap</th>
+                    <th>Pole Position</th>
+                    <th>Score</th>
+                    <th>Remove</th>
                 </tr>
                 </thead>
                 <tbody>{
-                    pilotList.map((d) =>
-                        <tr key={d.alias}>
-                            <td>{d.fullName}</td>
-                            <td>{d.alias}</td>
+                    roundPilotList.map((d) =>
+                        <tr key={d.id}>
+                            <td>{d.pilotName}</td>
+                            <td>{d.finalPosition}</td>
+                            <td>{d.bestLap}</td>
+                            <td>{d.polePosition}</td>
+                            <td>{d.score}</td>
+                            <td><a href="">X</a></td>
                         </tr>)
                 }</tbody>
             </table>
