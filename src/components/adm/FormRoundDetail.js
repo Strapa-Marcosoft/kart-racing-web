@@ -55,7 +55,7 @@ function FormRoundDetail () {
                             <td>{d.bestLap}</td>
                             <td>{d.polePosition}</td>
                             <td>{d.score}</td>
-                            <td><a href="">X</a></td>
+                            <td><a href="src/components">X</a></td>
                         </tr>)
                 }</tbody>
             </table>
