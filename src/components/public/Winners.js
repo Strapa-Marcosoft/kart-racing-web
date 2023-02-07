@@ -14,7 +14,7 @@ function Winners({roundId}){
 
     return(
         <div>
-            <table width="100%">
+            <table width="80%" align="center">
                 <tbody>
                 <tr>
                     <td colSpan="3"  className="winnersTitle">Vencedores</td>

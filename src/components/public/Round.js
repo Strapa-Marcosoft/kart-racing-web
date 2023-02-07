@@ -46,20 +46,18 @@ function Round({roundId }){
                         <td className="locationName">
                             Circuito {locationName} Teste
                         </td>
-                    </tr>
-                    <tr>
                         <td className="locationId">
                             {roundDate}
                         </td>
                     </tr>
                     <tr>
-                        <td className="locationImage">
+                        <td className="locationImage" colSpan="2">
                             <img src={require('../../img/location/' + locationId + '.png')} alt="this is the location" width="250" height="200" />
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            <Winners roundId="9"  />
+                        <td colSpan="2">
+                            <Winners roundId="9"/>
                         </td>
                     </tr>
                 <tr>

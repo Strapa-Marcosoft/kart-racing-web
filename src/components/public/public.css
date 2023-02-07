@@ -30,6 +30,8 @@
     font-style: italic;
     background-color: #eeeeee;
     text-shadow: 1px 1px 3px gray;
+    border-bottom: 1px #a1a1a1 dotted;
+    padding-left: 10px;
 }
 
 .locationId{
@@ -37,12 +39,15 @@
     font-size: 20px;
     font-style: italic;
     text-align: right;
+    background-color: #eeeeee;
     border-bottom: 1px #a1a1a1 dotted;
+    padding-right: 10px;
 }
 
 .locationImage{
     text-align: center;
     background-image: url("../../img/flag_background.png");
+    border-bottom: 1px #a1a1a1 dotted;
 }
 
 .firstPlace{
@@ -72,7 +77,6 @@
     font-style: italic;
     text-align: center;
     font-weight: bold;
-    border-top: 1px #a1a1a1 dotted;
 }
 
 .winnersName{
