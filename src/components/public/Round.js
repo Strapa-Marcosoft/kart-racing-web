@@ -1,10 +1,42 @@
 import Winners from "./Winners";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import kartRacingApi from "../adm/AxiosConfig";
 
-function Round({locationName,locationId, roundDate }){
+function Round({roundId }){
 
-    //const [locationName, setLocationName] = useState([])
-    //const [roundDate, setRoundDate] = useState([])
+    const [locationName, setLocationName] = useState(null)
+    const [locationId, setLocationId] = useState("0")
+    const [roundDate, setRoundDate] = useState(null)
+
+    useEffect(() => {
+        getRoundDetails();
+    }, []);
+
+    function getRoundDetails() {
+
+/*        kartRacingApi.get('/roundEntities/'+roundId)
+            .then(res => {
+                setLocationId(res.data.location);
+                setRoundDate(res.data.date);
+            })*/
+
+       kartRacingApi.get('/roundEntities/'+roundId)
+            .then(async res => {
+                setLocationId(res.data.location);
+                setRoundDate(res.data.date);
+
+                let roundLocationName = Promise.all(async round => {
+                    let roundLocation = await kartRacingApi.get("/locationEntities/" + round.location)
+                        .then(res => res.data.title);
+                    return {
+                        roundLocation
+                    };
+                });
+
+                setLocationName(await roundLocationName)
+            })
+    }
+
 
     return(
         <div className="round">
@@ -12,7 +44,7 @@ function Round({locationName,locationId, roundDate }){
                 <tbody>
                     <tr>
                         <td className="locationName">
-                            Circuito {locationName}
+                            Circuito {locationName} Teste
                         </td>
                     </tr>
                     <tr>
@@ -27,7 +59,7 @@ function Round({locationName,locationId, roundDate }){
                     </tr>
                     <tr>
                         <td>
-                            <Winners />
+                            <Winners roundId="9"  />
                         </td>
                     </tr>
                 <tr>

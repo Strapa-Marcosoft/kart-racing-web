@@ -1,6 +1,17 @@
 import './public.css'
+import {useEffect, useState} from "react";
+import kartRacingApi from "../adm/AxiosConfig";
 
-function Winners(){
+function Winners({roundId}){
+
+
+    function getRoundDetails() {
+        kartRacingApi.get('/roundEntities/'+roundId)
+            .then(res => {
+
+            })
+    }
+
     return(
         <div>
             <table width="100%">

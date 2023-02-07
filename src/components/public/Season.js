@@ -10,24 +10,24 @@ function Season(){
                 </tr>
                     <tr>
                         <td>
-                            <Round locationName="Interlagos" locationId="1" roundDate="24.10.2022"/>
+                            <Round roundId="2"/>
                         </td>
                         <td>
-                            <Round locationName="Imola" locationId="2"  roundDate="22.01.2022"/>
+                            <Round roundId="4"/>
                         </td>
                         <td>
-                            <Round locationName="EUA" locationId="3"  roundDate="10.06.2022"/>
+                            <Round roundId="9"/>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <Round locationName="Malasya Race" locationId="4"  roundDate="13.08.2022"/>
+                            <Round roundId="10"/>
                         </td>
                         <td>
-                            <Round locationName="Interlagos" locationId="6" roundDate="30.07.2022"/>
+                            <Round roundId="11"/>
                         </td>
                         <td>
-                            <Round locationName="Interlagos" locationId="7" roundDate="09.03.2022"/>
+                            <Round roundId="12"/>
                         </td>
                     </tr>
                 </tbody>
