@@ -28,7 +28,7 @@ function App() {
                 <Route path="/round/new" element={<FormRound/>} exact/>
                 <Route path="/round/:id" element={<FormRoundDetail/>} exact/>
 
-                <Route path="/public/season" element={<Season />} exact />
+                <Route path="/public/season/:seasonId" element={<Season />} exact />
             </Routes>
         </main>
       </div>
