@@ -1,6 +1,6 @@
 import './public.css'
 import React, {useEffect, useState} from "react";
-import kartRacingApi from "../adm/AxiosConfig";
+import kartRacingApi from "../../config/AxiosConfig";
 
 
 interface Round {

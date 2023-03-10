@@ -4,15 +4,16 @@ import AdmHeader from "./AdmHeader";
 
 const AdmHome = () => {
     return (
-        <div>
+        <div id="body">
             <AdmHeader/>
-            <br/><br/>
-            <ul>
-                <li><Link to="/season">Seasons</Link></li>
-                <li><Link to="/location">Locations</Link></li>
-                <li><Link to="/round">Rounds</Link></li>
-                <li><Link to="/pilot">Pilots</Link></li>
-            </ul>
+            <div id="main">
+                <ul>
+                    <li><Link to="/season">Seasons</Link></li>
+                    <li><Link to="/location">Locations</Link></li>
+                    <li><Link to="/round">Rounds</Link></li>
+                    <li><Link to="/pilot">Pilots</Link></li>
+                </ul>
+            </div>
         </div>
     );
 }

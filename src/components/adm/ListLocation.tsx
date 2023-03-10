@@ -1,10 +1,9 @@
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.css';
 import AdmHeader from "./AdmHeader";
-import kartRacingApi from "./AxiosConfig";
+import kartRacingApi from "../../config/AxiosConfig";
 
-interface Location{
+interface Location {
     title: string
 }
 
@@ -22,24 +21,26 @@ const ListLocation = () => {
     }
 
     return (
-        <div>
+        <div id="body">
             <AdmHeader/>
-            <h4>Location List</h4>
-            <button className="btn btn-light"><Link to="/location/new">Add Location</Link></button>
-            <button className="btn btn-light"><Link to="/">Back</Link></button>
-            <table className="table table-striped table-hover">
-                <thead>
-                <tr>
-                    <th>Title</th>
-                </tr>
-                </thead>
-                <tbody>{
-                    locationList.map((d) =>
-                        <tr key={d.title}>
-                            <td>{d.title}</td>
-                        </tr>)}
-                </tbody>
-            </table>
+            <div id="main">
+                <h4>Location List</h4>
+                <button className="btn btn-light"><Link to="/location/new">Add Location</Link></button>
+                <button className="btn btn-light"><Link to="/">Back</Link></button>
+                <table className="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                    </tr>
+                    </thead>
+                    <tbody>{
+                        locationList.map((d) =>
+                            <tr key={d.title}>
+                                <td>{d.title}</td>
+                            </tr>)}
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
 

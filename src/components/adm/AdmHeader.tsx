@@ -1,11 +1,9 @@
 const AdmHeader = () => {
-
     return (
-        <div>
-            <h2>Kart Racing Web - ADM Page</h2>
+        <div id="pageHeader">
+            Kart Racing Web - ADM Page
         </div>
     )
-
 }
 
 export default AdmHeader;

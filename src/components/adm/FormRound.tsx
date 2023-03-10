@@ -1,21 +1,21 @@
-import {useEffect,useState} from "react";
+import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
 import AdmHeader from "./AdmHeader";
-import kartRacingApi from "./AxiosConfig";
+import kartRacingApi from "../../config/AxiosConfig";
 
-interface Season{
+interface Season {
     id: number
     title: string
 }
 
-interface Location{
+interface Location {
     id: number
     title: string
 }
 
-interface RoundPilot{
-    id:number
+interface RoundPilot {
+    id: number
 }
 
 const FormRound = () => {
@@ -38,7 +38,7 @@ const FormRound = () => {
                 const roundId = roundResponse.data.id;
                 kartRacingApi.get("/pilotEntities")
                     .then(pilotResponse => {
-                        pilotResponse.data._embedded.pilotEntities.map((pilot:RoundPilot) => {
+                        pilotResponse.data._embedded.pilotEntities.map((pilot: RoundPilot) => {
                             const roundPilotData = {
                                 round: roundId,
                                 pilot: pilot.id
@@ -72,47 +72,54 @@ const FormRound = () => {
     }
 
     return (
-        <div>
+        <div id="body">
             <AdmHeader/>
-            <h4>Add Round</h4>
-            <table>
-                <tbody>
-                <tr>
-                    <td>Season:</td>
-                    <td>
-                        <select value={season} onChange={event => setSeason(event.target.value)} required>
-                            <option value="">Please choose an option</option>
-                            {
-                            seasonList.map((d) =>
-                                <option key={d.id} value={d.id}>{d.title}</option>
-                                )
-                            }
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Location:</td>
-                    <td>
-                        <select value={location} onChange={event => setLocation(event.target.value)}>
-                            <option value="">Please choose an option</option>
-                            {
-                            locationList.map((d) =>
-                            <option key={d.id} value={d.id}>{d.title}</option>
-                                )
-                            }
-                        </select>    
-                    </td>
-                </tr>
-                <tr>
-                    <td>Date:</td>
-                    <td><input type="text" name="title" value={date} onChange={event => setDate(event.target.value)}/></td>
-                </tr>
-                <tr>
-                    <td><button className="btn btn-light" onClick={addNewRound}>Save</button></td>
-                    <td><button className="btn btn-light"><Link to="/round">Cancel</Link></button></td>
-                </tr>
-                </tbody>
-            </table>
+            <div id="main">
+                <h4>Add Round</h4>
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>Season:</td>
+                        <td>
+                            <select value={season} onChange={event => setSeason(event.target.value)} required>
+                                <option value="">Please choose an option</option>
+                                {
+                                    seasonList.map((d) =>
+                                        <option key={d.id} value={d.id}>{d.title}</option>
+                                    )
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Location:</td>
+                        <td>
+                            <select value={location} onChange={event => setLocation(event.target.value)}>
+                                <option value="">Please choose an option</option>
+                                {
+                                    locationList.map((d) =>
+                                        <option key={d.id} value={d.id}>{d.title}</option>
+                                    )
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Date:</td>
+                        <td><input type="text" name="title" value={date}
+                                   onChange={event => setDate(event.target.value)}/></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button className="btn btn-light" onClick={addNewRound}>Save</button>
+                        </td>
+                        <td>
+                            <button className="btn btn-light"><Link to="/round">Cancel</Link></button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 }

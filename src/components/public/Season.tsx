@@ -1,7 +1,7 @@
 import RoundComponent from "./Round";
 import './public.css'
 import {useEffect, useState} from "react";
-import kartRacingApi from "../adm/AxiosConfig";
+import kartRacingApi from "../../config/AxiosConfig";
 import {useParams} from "react-router-dom";
 
 interface Round{
