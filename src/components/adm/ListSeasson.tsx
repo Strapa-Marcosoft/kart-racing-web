@@ -25,7 +25,7 @@ const ListSeason = () => {
         <div id="body">
             <AdmHeader/>
             <div id="main">
-                <h4>Season List</h4>
+                <div id="pageTitle">Season List</div>
                 <button className="btn btn-light"><Link to="/season/new">Add Season</Link></button>
                 <button className="btn btn-light"><Link to="/">Back</Link></button>
                 <table className="table table-striped table-hover">

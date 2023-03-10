@@ -24,7 +24,7 @@ const ListLocation = () => {
         <div id="body">
             <AdmHeader/>
             <div id="main">
-                <h4>Location List</h4>
+                <div id="pageTitle">Location List</div>
                 <button className="btn btn-light"><Link to="/location/new">Add Location</Link></button>
                 <button className="btn btn-light"><Link to="/">Back</Link></button>
                 <table className="table table-striped table-hover">

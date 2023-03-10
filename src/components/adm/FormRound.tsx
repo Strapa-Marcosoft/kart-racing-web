@@ -75,7 +75,7 @@ const FormRound = () => {
         <div id="body">
             <AdmHeader/>
             <div id="main">
-                <h4>Add Round</h4>
+                <div id="pageTitle">Add Round</div>
                 <table>
                     <tbody>
                     <tr>

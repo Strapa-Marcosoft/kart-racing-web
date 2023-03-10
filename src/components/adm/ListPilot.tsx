@@ -27,7 +27,7 @@ const ListPilot = () => {
         <div id="body">
             <AdmHeader/>
             <div id="main">
-                <h4>Pilot List</h4>
+                <div id="pageTitle">Pilot List</div>
                 <button className="btn btn-light"><Link to="/pilot/new">Add Pilot</Link></button>
                 <button className="btn btn-light"><Link to="/">Back</Link></button>
                 <table className="table table-striped table-hover">

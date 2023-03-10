@@ -16,7 +16,7 @@ const FormSeason = () => {
         <div id="body">
             <AdmHeader/>
             <div id="main">
-                <h4>Add Season</h4>
+                <div id="pageTitle">Add Season</div>
                 <table>
                     <tbody>
                     <tr>

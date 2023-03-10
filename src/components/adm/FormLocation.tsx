@@ -18,7 +18,7 @@ const FormLocation = () => {
         <div id="body">
             <AdmHeader/>
             <div id="main">
-                <h4>Add Location</h4>
+                <div id="pageTitle">Add Location</div>
                 Title
                 <input type="text" name="title" value={locationTitle}
                        onChange={event => setLocationTile(event.target.value)}/>

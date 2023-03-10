@@ -19,7 +19,7 @@ const FormPilot = () => {
         <div id="body">
             <AdmHeader/>
             <div id="main">
-                <h4>Add Pilot</h4>
+                <div id="pageTitle">Add Pilot</div>
                 <table>
                     <tbody>
                     <tr>

@@ -47,7 +47,7 @@ const FormRoundDetail = () => {
         <div id="body">
             <AdmHeader/>
             <div id="main">
-                <h4>Round Detail</h4>
+                <div id="pageTitle">Round Detail</div>
                 <button className="btn btn-light"><Link to="/pilot/new">Add Pilot</Link></button>
                 <button className="btn btn-light"><Link to="/">Back</Link></button>
                 <table className="table table-striped table-hover">

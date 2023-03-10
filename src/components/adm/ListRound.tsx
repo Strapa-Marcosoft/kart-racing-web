@@ -58,7 +58,7 @@ const ListRound = () => {
         <div id="body">
             <AdmHeader/>
             <div id="main">
-                <h4>Round List</h4>
+                <div id="pageTitle">Round List</div>
                 <button className="btn btn-light"><Link to="/round/new">Add Round</Link></button>
                 <button className="btn btn-light"><Link to="/">Back</Link></button>
                 <table className="table table-striped table-hover">
