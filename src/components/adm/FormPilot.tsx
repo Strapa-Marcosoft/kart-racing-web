@@ -4,11 +4,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 import AdmHeader from "./AdmHeader";
 import kartRacingApi from "./AxiosConfig";
 
-function FormPilot () {
+const FormPilot = () => {
     const [fullName, setFullName] = useState('');
     const [alias, setAlias] = useState('');
 
-    function addNewPilot(){
+    const addNewPilot = () => {
         kartRacingApi.post('/pilotEntities',{
             fullName,
             alias

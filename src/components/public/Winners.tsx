@@ -1,11 +1,16 @@
 import './public.css'
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import kartRacingApi from "../adm/AxiosConfig";
 
-function Winners({roundId}){
+
+interface Round {
+    roundId: number
+}
+
+const Winners:React.FC<Round> = ({roundId})=> {
 
 
-    function getRoundDetails() {
+    const getRoundDetails = () => {
         kartRacingApi.get('/roundEntities/'+roundId)
             .then(res => {
 
@@ -17,7 +22,7 @@ function Winners({roundId}){
             <table width="80%" align="center">
                 <tbody>
                 <tr>
-                    <td colSpan="3"  className="winnersTitle">Vencedores</td>
+                    <td colSpan={3}  className="winnersTitle">Vencedores</td>
                 </tr>
                 <tr>
                     <td className="placeNumber">1º</td>

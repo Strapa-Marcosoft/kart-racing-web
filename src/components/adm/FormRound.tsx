@@ -4,15 +4,28 @@ import 'bootstrap/dist/css/bootstrap.css';
 import AdmHeader from "./AdmHeader";
 import kartRacingApi from "./AxiosConfig";
 
-function FormRound () {
+interface Season{
+    id: number
+    title: string
+}
+
+interface Location{
+    id: number
+    title: string
+}
+
+interface RoundPilot{
+    id:number
+}
+
+const FormRound = () => {
     const [season, setSeason] = useState('');
     const [location, setLocation] = useState('');
     const [date, setDate] = useState('');
-    const [seasonList, setSeasonList] = useState([]);
-    const [locationList, setLocationList] = useState([]);
+    const [seasonList, setSeasonList] = useState<Season[]>([]);
+    const [locationList, setLocationList] = useState<Location[]>([]);
 
-
-    function addNewRound() {
+    const addNewRound = () => {
         console.log(season);
         console.log(date);
         const data = {
@@ -25,7 +38,7 @@ function FormRound () {
                 const roundId = roundResponse.data.id;
                 kartRacingApi.get("/pilotEntities")
                     .then(pilotResponse => {
-                        pilotResponse.data._embedded.pilotEntities.map(pilot => {
+                        pilotResponse.data._embedded.pilotEntities.map((pilot:RoundPilot) => {
                             const roundPilotData = {
                                 round: roundId,
                                 pilot: pilot.id
@@ -57,8 +70,6 @@ function FormRound () {
                 setLocationList(res.data._embedded.locationEntities);
             });
     }
-
-
 
     return (
         <div>

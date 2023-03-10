@@ -2,24 +2,37 @@ import {useEffect, useState} from "react";
 import kartRacingApi from "./AxiosConfig";
 import AdmHeader from "./AdmHeader";
 import {Link} from "react-router-dom";
+import * as string_decoder from "string_decoder";
 
-function ListRound(){
-    const [roundList, setRoundList] = useState([]);
+interface Round{
+    id: number
+    date: string
+    seasonTitle: string
+    locationTitle: string
+}
+
+interface RoundOriginal{
+    season:number
+    location:number
+}
+
+const ListRound = () => {
+    const [roundList, setRoundList] = useState<Round[]>([]);
 
     useEffect(() => {
         getRoundList();
     }, []);
 
-    function convertDate(originalDate){
+    const convertDate = (originalDate:string) => {
         let convertedDate = originalDate.split('-')
         return convertedDate[2] + "/" + convertedDate[1] + "/" + convertedDate[0];
     }
 
-    function getRoundList(){
+    const getRoundList = () =>{
         kartRacingApi.get("/roundEntities")
             .then(async res => {
 
-                 let roundList = Promise.all(res.data._embedded.roundEntities.map(async round => {
+                 let roundList = Promise.all(res.data._embedded.roundEntities.map(async (round:RoundOriginal) => {
 
                     let seasonTitle = await kartRacingApi.get("/seasonEntities/" + round.season)
                                             .then(res => {

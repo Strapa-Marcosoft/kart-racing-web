@@ -1,10 +1,19 @@
 import Winners from "./Winners";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import kartRacingApi from "../adm/AxiosConfig";
 
-function Round(properties){
 
-    const [locationName, setLocationName] = useState(null)
+interface Round {
+    roundId: number
+}
+
+interface RoundSearch {
+    location: number
+}
+
+const Round:React.FC<Round> = ({roundId}) =>{
+
+    const [locationName, setLocationName] = useState('')
     const [locationId, setLocationId] = useState("0")
     const [roundDate, setRoundDate] = useState(null)
 
@@ -12,7 +21,7 @@ function Round(properties){
         getRoundDetails();
     }, []);
 
-    function getRoundDetails() {
+    const getRoundDetails = () => {
 
 /*        kartRacingApi.get('/roundEntities/'+properties)
             .then(res => {
@@ -20,21 +29,13 @@ function Round(properties){
                 setRoundDate(res.data.date);
             })*/
 
-       kartRacingApi.get('/roundEntities/'+properties.roundId)
+       kartRacingApi.get('/roundEntities/'+roundId)
             .then(async res => {
                 setLocationId(res.data.location);
                 setRoundDate(res.data.date);
 
-                let roundLocationName = Promise.all(async round => {
-                    console.log("inside the promise")
-                    let roundLocation = await kartRacingApi.get("/locationEntities/" + round.location)
-                        .then(res => res.data.title);
-                    console.log(roundLocation)
-                    return {
-                        roundLocation
-                    };
-                });
-                setLocationName(await roundLocationName)
+
+                setLocationName("Test")
             })
     }
 
@@ -52,13 +53,13 @@ function Round(properties){
                         </td>
                     </tr>
                     <tr>
-                        <td className="locationImage" colSpan="2">
+                        <td className="locationImage" colSpan={2}>
                             <img src={require('../../img/location/' + locationId + '.png')} alt="this is the location" width="250" height="200" />
                         </td>
                     </tr>
                     <tr>
-                        <td colSpan="2">
-                            <Winners roundId="9"/>
+                        <td colSpan={2}>
+                            <Winners roundId={9}/>
                         </td>
                     </tr>
                 <tr>

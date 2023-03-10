@@ -4,14 +4,17 @@ import "bootstrap/dist/css/bootstrap.css";
 import AdmHeader from "./AdmHeader";
 import kartRacingApi from "./AxiosConfig";
 
-function ListSeason() {
-    const [seasonList, setSeasonList] = useState([]);
+interface Season{
+    title: string
+}
+const ListSeason = () => {
+    const [seasonList, setSeasonList] = useState<Season[]>([]);
 
     useEffect(() => {
         getSeasonList();
     }, []);
 
-    function getSeasonList() {
+    const getSeasonList = () => {
         kartRacingApi.get("/seasonEntities")
             .then(res => {
                 setSeasonList(res.data._embedded.seasonEntities);

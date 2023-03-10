@@ -4,14 +4,19 @@ import 'bootstrap/dist/css/bootstrap.css';
 import AdmHeader from "./AdmHeader";
 import kartRacingApi from "./AxiosConfig";
 
-function ListPilot () {
-    const [pilotList, setPilotList] = useState([])
+interface Pilot{
+    alias: string
+    fullName: string
+}
+
+const ListPilot = () => {
+    const [pilotList, setPilotList] = useState<Pilot[]>([])
 
     useEffect(() => {
         getPilotList();
     }, []);
 
-    function getPilotList() {
+    const getPilotList = () => {
         kartRacingApi.get('/pilotEntities')
             .then(res => {
                 const data = res.data._embedded.pilotEntities;

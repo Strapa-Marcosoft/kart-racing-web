@@ -4,13 +4,17 @@ import 'bootstrap/dist/css/bootstrap.css';
 import AdmHeader from "./AdmHeader";
 import kartRacingApi from "./AxiosConfig";
 
-function ListLocation() {
-    const [locationList, setLocationList] = useState([]);
+interface Location{
+    title: string
+}
+
+const ListLocation = () => {
+    const [locationList, setLocationList] = useState<Location[]>([]);
     useEffect(() => {
         getLocationList();
     }, []);
 
-    function getLocationList() {
+    const getLocationList = () => {
         kartRacingApi.get('/locationEntities')
             .then(res => {
                 setLocationList(res.data._embedded.locationEntities);

@@ -4,10 +4,10 @@ import 'bootstrap/dist/css/bootstrap.css';
 import AdmHeader from "./AdmHeader";
 import kartRacingApi from "./AxiosConfig";
 
-function FormSeason () {
+const FormSeason = () => {
     const [title, setTitle] = useState('');
 
-    function addNewSeason(){
+    const addNewSeason = () => {
         kartRacingApi.post('/seasonEntities',{
             title
         })

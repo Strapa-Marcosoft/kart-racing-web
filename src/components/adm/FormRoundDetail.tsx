@@ -4,19 +4,32 @@ import 'bootstrap/dist/css/bootstrap.css';
 import AdmHeader from "./AdmHeader";
 import kartRacingApi from "./AxiosConfig";
 
-function FormRoundDetail () {
-    const [roundPilotList, setPilotList] = useState([])
+interface RoundPilot{
+    id:number
+    pilotName: string
+    finalPosition:number
+    bestLap:string
+    polePosition:string
+    score:number
+}
+
+interface Pilot{
+    pilot:number
+}
+
+const FormRoundDetail = () => {
+    const [roundPilotList, setPilotList] = useState<RoundPilot[]>([])
     let { id } = useParams();
 
     useEffect(() => {
         getPilotList();
     }, []);
 
-    function getPilotList() {
+    const getPilotList = () => {
         console.log(id);
         kartRacingApi.get('/roundPilotEntities/search/getAllByRound?round='+id)
             .then(async res => {
-                let roundPilotList = Promise.all(res.data._embedded.roundPilotEntities.map(async roundPilot => {
+                let roundPilotList = Promise.all(res.data._embedded.roundPilotEntities.map(async (roundPilot:Pilot) => {
                     let pilotName = await kartRacingApi.get("/pilotEntities/" + roundPilot.pilot)
                         .then(res => res.data.fullName);
 
