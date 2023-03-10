@@ -2,7 +2,7 @@ import Winners from "./Winners";
 import {useEffect, useState} from "react";
 import kartRacingApi from "../adm/AxiosConfig";
 
-function Round({roundId }){
+function Round(properties){
 
     const [locationName, setLocationName] = useState(null)
     const [locationId, setLocationId] = useState("0")
@@ -14,25 +14,26 @@ function Round({roundId }){
 
     function getRoundDetails() {
 
-/*        kartRacingApi.get('/roundEntities/'+roundId)
+/*        kartRacingApi.get('/roundEntities/'+properties)
             .then(res => {
                 setLocationId(res.data.location);
                 setRoundDate(res.data.date);
             })*/
 
-       kartRacingApi.get('/roundEntities/'+roundId)
+       kartRacingApi.get('/roundEntities/'+properties.roundId)
             .then(async res => {
                 setLocationId(res.data.location);
                 setRoundDate(res.data.date);
 
                 let roundLocationName = Promise.all(async round => {
+                    console.log("inside the promise")
                     let roundLocation = await kartRacingApi.get("/locationEntities/" + round.location)
                         .then(res => res.data.title);
+                    console.log(roundLocation)
                     return {
                         roundLocation
                     };
                 });
-
                 setLocationName(await roundLocationName)
             })
     }

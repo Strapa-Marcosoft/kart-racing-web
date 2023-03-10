@@ -34,21 +34,18 @@ function Season(){
             });
     }
 
-    function renderRound(roundId, index){
+    function renderRound(round, index){
         console.log("index is: " +index)
-            return <tr key={index}><td><Round roundId={roundId} /></td></tr>
+            return <Round roundId={round.id} />
     }
 
     return(
         <div className="season">
-            <table width="90%" align="center" className="seasonTable">
-                <tbody>
-                <tr>
-                    <td colSpan="3" className="seasonTitle">Kart Racing - Season {seasonTitle}</td>
-                </tr>
+
+            <div className="seasonTitle">Kart Racing - Season {seasonTitle}</div>
+            <div className="roundContainer">
                 {seasonRoundList.map((r,i) => renderRound(r,i))}
-                </tbody>
-            </table>
+            </div>
         </div>
     )
 }
