@@ -2,7 +2,8 @@ import {useEffect, useState} from "react";
 import kartRacingApi from "../../config/AxiosConfig";
 import AdmHeader from "./AdmHeader";
 import {Link} from "react-router-dom";
-
+import './List.css'
+import {ListButtons} from "../common/ListButtons";
 interface Round {
     id: number
     date: string
@@ -57,10 +58,9 @@ const ListRound = () => {
     return (
         <div id="body">
             <AdmHeader/>
-            <div id="main">
-                <div id="pageTitle">Round List</div>
-                <button className="btn btn-light"><Link to="/round/new">Add Round</Link></button>
-                <button className="btn btn-light"><Link to="/">Back</Link></button>
+            <div id="list">
+                <div className="title">Round List</div>
+                <ListButtons objectTitle={"Round"} addButtonLink={"/round/new"}/>
                 <table className="table table-striped table-hover">
                     <thead>
                     <tr>

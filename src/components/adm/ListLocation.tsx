@@ -2,6 +2,8 @@ import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import AdmHeader from "./AdmHeader";
 import kartRacingApi from "../../config/AxiosConfig";
+import './List.css'
+import {ListButtons} from "../common/ListButtons";
 
 interface Location {
     title: string
@@ -23,10 +25,9 @@ const ListLocation = () => {
     return (
         <div id="body">
             <AdmHeader/>
-            <div id="main">
-                <div id="pageTitle">Location List</div>
-                <button className="btn btn-light"><Link to="/location/new">Add Location</Link></button>
-                <button className="btn btn-light"><Link to="/">Back</Link></button>
+            <div id="list">
+                <div className="title">Location List</div>
+                <ListButtons objectTitle={"Location"} addButtonLink={"/location/new"} />
                 <table className="table table-striped table-hover">
                     <thead>
                     <tr>
