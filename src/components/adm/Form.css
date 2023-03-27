@@ -1,0 +1,26 @@
+#form{
+
+}
+
+#form .title{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px;
+    border-bottom: 1px dotted #dddddd;
+}
+
+#form .fields{
+    width: 400px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 20px;
+ }
+
+#form .label{
+    font-size: 15px;
+}
+
+#form .fieldValidation{
+    color: red;
+    font-size: 15px;
+}

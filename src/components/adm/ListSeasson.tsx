@@ -1,7 +1,8 @@
 import {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
 import AdmHeader from "./AdmHeader";
 import kartRacingApi from "../../config/AxiosConfig";
+import {ListButtons} from "../common/ListButtons";
+import './List.css'
 
 interface Season {
     title: string
@@ -24,10 +25,9 @@ const ListSeason = () => {
     return (
         <div id="body">
             <AdmHeader/>
-            <div id="main">
-                <div id="pageTitle">Season List</div>
-                <button className="btn btn-light"><Link to="/season/new">Add Season</Link></button>
-                <button className="btn btn-light"><Link to="/">Back</Link></button>
+            <div id="list">
+                <div className="title">Season List</div>
+                <ListButtons />
                 <table className="table table-striped table-hover">
                     <thead>
                     <tr>

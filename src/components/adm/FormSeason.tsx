@@ -1,39 +1,79 @@
-import {useState} from "react";
+import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import AdmHeader from "./AdmHeader";
 import kartRacingApi from "../../config/AxiosConfig";
+import {OperationFeedback} from "../common/OperationFeedback";
+import './Form.css'
+import {FormButtons} from "../common/FormButtons";
+interface FormValues{
+    title: string
+}
+
+interface FormErrors{
+    title?: string
+}
 
 const FormSeason = () => {
-    const [title, setTitle] = useState('');
 
-    const addNewSeason = () => {
-        kartRacingApi.post('/seasonEntities', {
-            title
-        })
+    const [formValues, setFormValues] = useState<FormValues>({
+        title: ""
+    });
+
+    const [formErrors, setFormErrors] = useState<FormErrors>({});
+
+    const [showFormButtons, setShowFormButtons] = useState(true)
+
+    const [showOperationFeedback, setShowOperationFeedback] = useState(false)
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
+        const {name,value} = e.target;
+        setFormValues({...formValues, [name]:value})
+        setFormErrors({...formErrors, [name]: '' });
+    }
+
+    const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+
+        const validationErrors:FormErrors = {};
+
+        if (!formValues.title) {
+            validationErrors.title = 'Please enter a title';
+        }
+
+        if (Object.keys(validationErrors).length > 0) {
+            setFormErrors(validationErrors);
+        } else {
+            kartRacingApi.post('/seasonEntities', {
+                title: formValues.title
+            }).then(() => {
+                setShowFormButtons(false)
+                setShowOperationFeedback(true)
+                setFormValues({title:''})
+            })
+        }
     }
 
     return (
         <div id="body">
             <AdmHeader/>
             <div id="main">
-                <div id="pageTitle">Add Season</div>
-                <table>
-                    <tbody>
-                    <tr>
-                        <td>Title:</td>
-                        <td><input type="text" name="title" value={title}
-                                   onChange={event => setTitle(event.target.value)}/></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button className="btn btn-light" onClick={addNewSeason}>Save</button>
-                        </td>
-                        <td>
-                            <button className="btn btn-light"><Link to="/season">Cancel</Link></button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                <form onSubmit={handleSubmit}>
+                    <div id="form">
+                        <div className="title">Add Season</div>
+                        <div className="fields">
+                            <div className="label">Title:</div>
+                            <div><input
+                                type="text"
+                                name="title"
+                                value={formValues.title}
+                                onChange={handleInputChange}/>
+                                {formErrors.title && <div className="fieldValidation">{formErrors.title}</div>}
+                            </div>
+                        </div>
+                        {showFormButtons && <FormButtons />}
+                        {showOperationFeedback && <OperationFeedback />}
+                    </div>
+                </form>
             </div>
         </div>
     );
