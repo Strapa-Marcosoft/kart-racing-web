@@ -1,0 +1,13 @@
+#operationFeedback{
+    width: 400px;
+    height: 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    color: green;
+    font-size: 18px;
+    padding: 20px;
+}
+
+#operationFeedback button{
+    width: 150px;
+}

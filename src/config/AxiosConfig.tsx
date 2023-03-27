@@ -6,4 +6,3 @@ export const kartRacingApi = axios.create({
 
 
 export default kartRacingApi;
-

@@ -1,0 +1,104 @@
+.season{
+    background-color: #f3f3f3;
+}
+
+.roundContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.seasonTable{
+    border: 1px solid #a1a1a1;
+    box-shadow: 0px 5px 5px #a1a1a1;
+}
+
+.round{
+    background-color: #f9f9f9;
+    width: 500px;
+    border-left: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+}
+
+.seasonTitle{
+    text-align: center;
+    font-family: "Exo 2";
+    font-size: 35px;
+    font-weight: bold;
+    font-style: italic;
+    color: white;
+    background-color: red;
+    height: 60px;
+    text-shadow: 1px 1px 5px black;
+}
+
+.locationName{
+    font-family: "Exo 2";
+    font-size: 25px;
+    font-weight: bold;
+    font-style: italic;
+    background-color: #eeeeee;
+    text-shadow: 1px 1px 3px gray;
+    border-bottom: 1px #a1a1a1 dotted;
+    padding-left: 10px;
+}
+
+.locationId{
+    font-family: "Exo 2";
+    font-size: 20px;
+    font-style: italic;
+    text-align: right;
+    background-color: #eeeeee;
+    border-bottom: 1px #a1a1a1 dotted;
+    padding-right: 10px;
+}
+
+.locationImage{
+    text-align: center;
+    background-image: url("../../img/flag_background.png");
+    border-bottom: 1px #a1a1a1 dotted;
+}
+
+.firstPlace{
+    opacity: 100%;
+    text-align: center;
+    vertical-align: top;
+    border-radius: 10px;
+}
+
+.secondPlace{
+    opacity: 70%;
+    text-align: center;
+    vertical-align: top;
+    border-radius: 10px;
+}
+
+.thirdPlace{
+    opacity: 40%;
+    text-align: center;
+    vertical-align: top;
+    border-radius: 10px;
+}
+
+.winnersTitle{
+    font-size: 20px;
+    font-family: "Exo 2", Verdana;
+    font-style: italic;
+    text-align: center;
+    font-weight: bold;
+}
+
+.winnersName{
+    font-size: 12px;
+    font-family: "Exo 2", Verdana;
+    font-style: italic;
+    text-align: center;
+}
+
+.placeNumber{
+    font-family: "Exo 2";
+    text-align: center;
+    font-style: italic;
+}

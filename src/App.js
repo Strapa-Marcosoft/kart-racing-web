@@ -1,20 +1,20 @@
 import './App.css';
-import AdmHome from "./components/AdmHome";
+import AdmHome from "./components/adm/AdmHome";
 import {Route, Routes } from 'react-router-dom';
-import ListLocation from "./components/ListLocation";
-import FormLocation from "./components/FormLocation";
-import ListPilot from "./components/ListPilot";
-import FormPilot from "./components/FormPilot";
-import ListSeason from "./components/ListSeasson";
-import FormSeason from "./components/FormSeason"
-import ListRound from "./components/ListRound";
-import FormRound from "./components/FormRound";
-import FormRoundDetail from "./components/FormRoundDetail";
+import ListLocation from "./components/adm/ListLocation";
+import FormLocation from "./components/adm/FormLocation";
+import ListPilot from "./components/adm/ListPilot";
+import FormPilot from "./components/adm/FormPilot";
+import ListSeason from "./components/adm/ListSeasson";
+import FormSeason from "./components/adm/FormSeason"
+import ListRound from "./components/adm/ListRound";
+import FormRound from "./components/adm/FormRound";
+import FormRoundDetail from "./components/adm/FormRoundDetail";
+import Season from "./components/public/Season";
 
 function App() {
   return (
-      <div className="w-75 border" >
-
+      <div>
         <main>
             <Routes>
                 <Route path="/" element={<AdmHome/>} exact/>
@@ -27,6 +27,8 @@ function App() {
                 <Route path="/round" element={<ListRound/>} exact/>
                 <Route path="/round/new" element={<FormRound/>} exact/>
                 <Route path="/round/:id" element={<FormRoundDetail/>} exact/>
+
+                <Route path="/public/season/:seasonId" element={<Season />} exact />
             </Routes>
         </main>
       </div>

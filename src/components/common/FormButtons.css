@@ -1,0 +1,14 @@
+#buttons{
+    padding: 20px;
+    width: 400px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#buttons button{
+    width: 150px;
+}
+
+#button .container{
+    padding: 10px;
+}
