@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import AdmHeader from "./AdmHeader";
+import AdmHeader from "../common/AdmHeader";
 import kartRacingApi from "../../config/AxiosConfig";
 import {ListButtons} from "../common/ListButtons";
 import './List.css'

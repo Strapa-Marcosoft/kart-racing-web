@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import AdmHeader from "./AdmHeader";
+import AdmHeader from "../common/AdmHeader";
 import kartRacingApi from "../../config/AxiosConfig";
 import './List.css'
 import {ListButtons} from "../common/ListButtons";

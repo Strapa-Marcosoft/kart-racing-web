@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
-import AdmHeader from "./AdmHeader";
+import AdmHeader from "../common/AdmHeader";
 import kartRacingApi from "../../config/AxiosConfig";
 import {OperationFeedback} from "../common/OperationFeedback";
 import './Form.css'
@@ -14,6 +14,8 @@ interface FormErrors{
 }
 
 const FormSeason = () => {
+
+    const backLink = "/season"
 
     const [formValues, setFormValues] = useState<FormValues>({
         title: ""
@@ -70,8 +72,8 @@ const FormSeason = () => {
                                 {formErrors.title && <div className="fieldValidation">{formErrors.title}</div>}
                             </div>
                         </div>
-                        {showFormButtons && <FormButtons />}
-                        {showOperationFeedback && <OperationFeedback />}
+                        {showFormButtons && <FormButtons cancelButtonLink={backLink}/>}
+                        {showOperationFeedback && <OperationFeedback okButtonLink={backLink} />}
                     </div>
                 </form>
             </div>
