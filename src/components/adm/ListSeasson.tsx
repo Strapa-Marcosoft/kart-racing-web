@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import AdmHeader from "./AdmHeader";
+import AdmHeader from "../common/AdmHeader";
 import kartRacingApi from "../../config/AxiosConfig";
 import {ListButtons} from "../common/ListButtons";
 import './List.css'
@@ -27,7 +27,7 @@ const ListSeason = () => {
             <AdmHeader/>
             <div id="list">
                 <div className="title">Season List</div>
-                <ListButtons />
+                <ListButtons objectTitle={"Season"} addButtonLink={"/season/new"} />
                 <table className="table table-striped table-hover">
                     <thead>
                     <tr>

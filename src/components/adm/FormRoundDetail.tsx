@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
-import AdmHeader from "./AdmHeader";
+import AdmHeader from "../common/AdmHeader";
 import kartRacingApi from "../../config/AxiosConfig";
 
 interface RoundPilot {

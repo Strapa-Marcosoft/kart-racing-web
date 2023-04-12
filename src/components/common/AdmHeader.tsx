@@ -1,7 +1,7 @@
 const AdmHeader = () => {
     return (
         <div id="pageHeader">
-            Kart Racing Web - ADM Page
+            <span className={"title"}>Kart Racing Web - ADM Page</span>
         </div>
     )
 }

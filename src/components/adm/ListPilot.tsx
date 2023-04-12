@@ -1,7 +1,9 @@
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import AdmHeader from "./AdmHeader";
+import AdmHeader from "../common/AdmHeader";
 import kartRacingApi from "../../config/AxiosConfig";
+import './List.css'
+import {ListButtons} from "../common/ListButtons";
 
 interface Pilot {
     alias: string
@@ -26,10 +28,9 @@ const ListPilot = () => {
     return (
         <div id="body">
             <AdmHeader/>
-            <div id="main">
-                <div id="pageTitle">Pilot List</div>
-                <button className="btn btn-light"><Link to="/pilot/new">Add Pilot</Link></button>
-                <button className="btn btn-light"><Link to="/">Back</Link></button>
+            <div id="list">
+                <div className="title">Pilot List</div>
+                <ListButtons objectTitle={"Pilot"} addButtonLink={"/pilot/new"}/>
                 <table className="table table-striped table-hover">
                     <thead>
                     <tr>
