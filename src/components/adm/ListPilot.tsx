@@ -30,7 +30,7 @@ const ListPilot = () => {
             <AdmHeader/>
             <div id="list">
                 <div className="title">Pilot List</div>
-                <ListButtons objectTitle={"Pilot"} addButtonLink={"/pilot/new"}/>
+                <ListButtons objectTitle={"Pilot"} addButtonLink={"/admin/pilot/new"}/>
                 <table className="table table-striped table-hover">
                     <thead>
                     <tr>

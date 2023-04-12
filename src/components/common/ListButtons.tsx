@@ -14,7 +14,7 @@ export const ListButtons:React.FC<ListButtonsProps> = ({objectTitle,addButtonLin
                 <Link to={addButtonLink}><button className="btn btn-outline-primary">Add {objectTitle}</button></Link>
             </div>
             <div className="container">
-                <Link to="/"><button className="btn btn-outline-secondary">Back</button></Link>
+                <Link to="/admin/"><button className="btn btn-outline-secondary">Back</button></Link>
             </div>
         </div>
     )

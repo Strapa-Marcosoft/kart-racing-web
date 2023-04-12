@@ -60,7 +60,7 @@ const ListRound = () => {
             <AdmHeader/>
             <div id="list">
                 <div className="title">Round List</div>
-                <ListButtons objectTitle={"Round"} addButtonLink={"/round/new"}/>
+                <ListButtons objectTitle={"Round"} addButtonLink={"/admin/round/new"}/>
                 <table className="table table-striped table-hover">
                     <thead>
                     <tr>
@@ -71,7 +71,7 @@ const ListRound = () => {
                     </thead>
                     <tbody>{roundList.map((d) =>
                         <tr key={d.id}>
-                            <td><Link to={"/round/" + d.id}>{convertDate(d.date)}</Link></td>
+                            <td><Link to={"/admin/round/" + d.id}>{convertDate(d.date)}</Link></td>
                             <td>{d.seasonTitle}</td>
                             <td>{d.locationTitle}</td>
 

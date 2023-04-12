@@ -48,8 +48,8 @@ const FormRoundDetail = () => {
             <AdmHeader/>
             <div id="main">
                 <div id="pageTitle">Round Detail</div>
-                <button className="btn btn-light"><Link to="/pilot/new">Add Pilot</Link></button>
-                <button className="btn btn-light"><Link to="/">Back</Link></button>
+                <button className="btn btn-light"><Link to="/admin/pilot/new">Add Pilot</Link></button>
+                <button className="btn btn-light"><Link to="/admin/">Back</Link></button>
                 <table className="table table-striped table-hover">
                     <thead>
                     <tr>

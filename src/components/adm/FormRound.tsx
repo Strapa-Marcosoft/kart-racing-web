@@ -35,7 +35,7 @@ interface RoundPilot {
 
 const FormRound = () => {
 
-    const backLink = "/round"
+    const backLink = "/admin/round"
 
     const [formValues, setFormValues] = useState<FormValues>({
         season: 0,

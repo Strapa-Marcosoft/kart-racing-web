@@ -18,7 +18,7 @@ interface FormErrors{
 
 const FormPilot = () => {
 
-    const backLink = "/pilot"
+    const backLink = "/admin/pilot"
 
     const [formValues, setFormValues] = useState<FormValues>({
         fullName: "",

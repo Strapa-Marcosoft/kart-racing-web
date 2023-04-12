@@ -15,7 +15,7 @@ interface FormErrors{
 
 const FormSeason = () => {
 
-    const backLink = "/season"
+    const backLink = "/admin/season"
 
     const [formValues, setFormValues] = useState<FormValues>({
         title: ""

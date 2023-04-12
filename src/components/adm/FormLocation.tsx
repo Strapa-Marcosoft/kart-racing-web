@@ -17,7 +17,7 @@ interface FormErrors{
 
 const FormLocation = () => {
 
-    const backLink = "/location"
+    const backLink = "/admin/location"
 
     const [formValues, setFormValues] = useState<FormValues>({
         title: ""

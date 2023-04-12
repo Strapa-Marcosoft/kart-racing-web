@@ -27,7 +27,7 @@ const ListLocation = () => {
             <AdmHeader/>
             <div id="list">
                 <div className="title">Location List</div>
-                <ListButtons objectTitle={"Location"} addButtonLink={"/location/new"} />
+                <ListButtons objectTitle={"Location"} addButtonLink={"/admin/location/new"} />
                 <table className="table table-striped table-hover">
                     <thead>
                     <tr>

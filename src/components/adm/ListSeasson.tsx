@@ -27,7 +27,7 @@ const ListSeason = () => {
             <AdmHeader/>
             <div id="list">
                 <div className="title">Season List</div>
-                <ListButtons objectTitle={"Season"} addButtonLink={"/season/new"} />
+                <ListButtons objectTitle={"Season"} addButtonLink={"/admin/season/new"} />
                 <table className="table table-striped table-hover">
                     <thead>
                     <tr>
